@@ -1,0 +1,29 @@
+{
+ "name": "Kite Wars: Uttarayan",
+ "short_name": "Kite Wars",
+ "description": "Kite-fighting story game: 40 levels across Ahmedabad. Kai po che!",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#2a1d3a",
+ "theme_color": "#ff7a45",
+ "icons": [
+  {
+   "src": "icons/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

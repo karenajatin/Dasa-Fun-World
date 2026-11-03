@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#6d1b1b">
+<title>Vyapar — Online</title>
+<meta property="og:title" content="Vyapar · વ્યાપાર — play online with friends">
+<meta property="og:description" content="India's favourite Vyapar (Business) board game — 2 to 4 friends, each on their own phone. 20 languages.">
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="style.css?v=20">
+</head><body>
+<div id="app">
+  <section id="home" class="screen">
+    <div class="hero">
+      <div class="logo" data-t="logo">Vyapar</div>
+      <div class="tag" data-t="tag"></div>
+    </div>
+    <div class="card">
+      <label data-t="yourName"></label>
+      <input id="nameIn" maxlength="14" data-tp="namePh" autocomplete="off">
+      <label data-t="boardL"></label>
+      <div id="boardPick" class="bpick"></div>
+      <button id="createBtn" class="btn big saffron" data-t="create"></button>
+      <div class="or" data-t="or"></div>
+      <label data-t="friendCode"></label>
+      <div class="row"><input id="codeIn" maxlength="4" placeholder="ABCD" autocomplete="off" autocapitalize="characters" class="code"><button id="joinBtn" class="btn green" data-t="join"></button></div>
+    </div>
+    <button id="rulesBtn" class="btn ghost" data-t="howTo"></button>
+    <a id="dlLink" class="btn ghost" href="download.html" style="text-align:center;text-decoration:none" data-t="download"></a>
+    <div class="foot" data-t="foot"></div>
+  </section>
+  <section id="lobby" class="screen hidden">
+    <div class="hero small"><div class="logo" data-t="logo"></div></div>
+    <div class="card center">
+      <div class="muted" data-t="roomCode"></div>
+      <div id="lobbyCode" class="bigcode">----</div>
+      <button id="shareBtn" class="btn green" data-t="shareCode"></button>
+      <div id="lobbyBoard" class="bchip"></div>
+    </div>
+    <div class="card"><div class="muted"><span data-t="playersL"></span> (<span id="lobbyCount">0</span>/4)</div><div id="lobbyPlayers"></div></div>
+    <div id="hostBox" class="card">
+      <div class="muted" data-t="boardL"></div>
+      <div id="boardOpts" class="bpick"></div>
+      <div class="muted" data-t="startCash"></div>
+      <div id="cashOpts" class="chips"></div>
+      <label class="check"><input type="checkbox" id="auctionChk"> <span data-t="auctionOpt"></span></label>
+      <button id="startBtn" class="btn big saffron" data-t="startGame"></button>
+    </div>
+    <div id="waitHost" class="muted center hidden" data-t="waitHost"></div>
+    <button id="leaveLobby" class="btn ghost" data-t="leave"></button>
+  </section>
+  <section id="game" class="screen hidden">
+    <header id="bar"><span class="t" data-t="logo"></span><span id="roomChip" class="chip"></span><span id="net" class="dot"></span><button id="menuBtn" class="ib">☰</button></header>
+    <div id="boardWrap"><div id="board"><div id="center"><div class="cdk cdk1"><div><b data-t="deck_chance"></b><small class="enx">Try Your Luck</small></div></div><div class="cdk cdk2"><div><b data-t="deck_community"></b><small class="enx">Public Welfare</small></div></div><svg class="arw a1" viewBox="0 0 24 24"><path d="M4 6h11a5 5 0 0 1 5 5v6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M15 15l5 6 5-6" fill="currentColor"/></svg><svg class="arw a2" viewBox="0 0 24 24"><path d="M4 6h11a5 5 0 0 1 5 5v6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M15 15l5 6 5-6" fill="currentColor"/></svg><div class="clogo"><span data-t="logo"></span><small data-t="logoSub">BUSINESS</small></div><div id="cpanel"><div id="dice"><div class="die" id="d1"></div><div class="die" id="d2"></div></div><div id="turnLbl"></div><div id="feed"></div></div></div><div id="tokens"></div></div></div>
+    <div id="players"></div>
+    <div id="actions"></div>
+  </section>
+</div>
+<button id="langBtn" class="langbtn" type="button" aria-label="Language">🌐 English</button>
+<div id="sheetBg" class="hidden"><div id="sheet"></div></div>
+<div id="toasts"></div>
+<div id="cardPop" class="hidden"></div>
+<script>window.VY_API="https://vyapar.sites.tab.bot";</script>
+<script src="i18n.js?v=20"></script>
+<script src="engine.js?v=20"></script>
+<script src="art.js?v=20"></script>
+<script src="app.js?v=20"></script>
+</body></html>

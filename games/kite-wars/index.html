@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#ff7a45">
+<title>Kite Wars: Uttarayan — Kite Fighting Story Game</title>
+<meta name="description" content="Kite Wars: Uttarayan — a fast kite-fighting story game set in Ahmedabad. Cross strings, saw fast and cut rival kites across 40 levels to save Dada's 60-year-old kite shop. Kai po che!">
+<meta name="keywords" content="kite game, Uttarayan, Makar Sankranti, kite fighting, patang, Ahmedabad, Gujarat, kai po che, mobile game">
+<link rel="canonical" href="https://dasev.publicvm.com/games/kite-wars/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kite Wars: Uttarayan">
+<meta property="og:description" content="Cut rival kites across 40 levels, beat Baadshah and save Patang Ghar. Kai po che!">
+<meta property="og:url" content="https://dasev.publicvm.com/games/kite-wars/">
+<meta property="og:image" content="https://dasev.publicvm.com/games/kite-wars/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css?v=13">
+</head>
+<body>
+<canvas id="c" aria-label="Kite Wars game"></canvas>
+<button id="pauseBtn" class="hide" aria-label="Pause">II</button>
+
+<!-- title -->
+<section id="title" class="ov scr">
+  <div class="logo">
+    <div class="lk">🪁</div>
+    <h1><span>KITE</span> <span>WARS</span></h1>
+    <div class="uttar">UTTARAYAN</div>
+    <div class="ribbon">KAI PO CHE!</div>
+  </div>
+  <div class="tstats"><span id="tCoins">🪙 0</span><span id="tStars">⭐ 0/120</span></div>
+  <div class="tbtns">
+    <button class="btn big" id="playBtn">PLAY</button>
+    <div class="row"><button class="btn alt" id="shopBtn">🛒 SHOP</button><button class="btn alt" id="setBtn">⚙ SETTINGS</button></div>
+  </div>
+  <p class="ver">v1.0 · 40 levels · Sound on for the full festival 🔊</p>
+</section>
+
+<!-- story -->
+<section id="story" class="ov scr hide">
+  <canvas id="sc"></canvas>
+  <div id="stCard"><b id="stTitle"></b><span id="stSub"></span></div>
+  <button id="skipBtn" class="chip">SKIP ⏭</button>
+  <div id="stBox"><div id="stName"></div><p id="stText"></p><div class="tapc">tap ▸</div></div>
+  <div id="celebrate" class="hide">
+    <div class="cel1">PATANG GHAR<br>IS SAVED!</div>
+    <div class="cel2">KAI PO CHE!</div>
+    <div class="credits">THE END<br><small>Arjun, Dada, Pinky Didi, Rohan, the Terrace Tigers and Baadshah will see you next Uttarayan.</small></div>
+    <button class="btn" id="celBtn">BACK TO MAP</button>
+  </div>
+</section>
+
+<!-- map -->
+<section id="map" class="ov scr hide">
+  <div class="mtop"><button class="chip" id="mapBack">◀</button><b>AHMEDABAD</b><span id="mCoins" class="chip">🪙 0</span><button class="chip" id="mapShop">🛒</button></div>
+  <div id="mapScroll"><div id="mapInner"></div></div>
+</section>
+
+<!-- level card -->
+<section id="card" class="ov dim hide">
+  <div class="panel pop">
+    <div class="cchap" id="cChap"></div>
+    <h2 id="cName"></h2>
+    <div class="cobj"><span id="cIcon"></span><b id="cObj"></b></div>
+    <div class="cnew hide" id="cNew"></div>
+    <ul class="srules" id="cStars"></ul>
+    <button class="btn big" id="cGo">FLY! 🪁</button>
+    <button class="link" id="cBack">back to map</button>
+  </div>
+</section>
+
+<!-- pause -->
+<section id="pause" class="ov dim hide">
+  <div class="panel pop">
+    <h2>PAUSED</h2>
+    <div class="toggles" data-t="1"></div>
+    <button class="btn big" id="pResume">RESUME</button>
+    <div class="row"><button class="btn alt" id="pRetry">↻ RESTART</button><button class="btn alt" id="pMap">MAP</button></div>
+  </div>
+</section>
+
+<!-- result -->
+<section id="result" class="ov dim hide">
+  <div class="panel pop">
+    <div id="rWin"><div class="rkpc">KAI PO CHE!</div><div class="rsub">LEVEL CLEAR</div></div>
+    <h2 id="rLose" class="hide">KITE CUT!</h2>
+    <div class="rstars"><i>★</i><i>★</i><i>★</i></div>
+    <div class="stats"><div><b id="rScore">0</b>score</div><div><b id="rCuts">0</b>kites cut</div><div><b id="rCombo">x0</b>best combo</div><div><b id="rCoins">+0</b>coins</div></div>
+    <p class="tip" id="rTip"></p>
+    <button class="btn big" id="rNext">NEXT ▶</button>
+    <div class="row"><button class="btn alt" id="rRetry">↻ RETRY</button><button class="btn alt" id="rMap">MAP</button></div>
+  </div>
+</section>
+
+<!-- shop -->
+<section id="shop" class="ov dim hide">
+  <div class="panel wide pop">
+    <div class="shead"><h2>PATANG GHAR SHOP</h2><span id="sCoins" class="chip">🪙 0</span></div>
+    <div class="tabs"><button class="tab on" data-tab="kites">KITES</button><button class="tab" data-tab="manja">MANJA</button></div>
+    <div id="sList"></div>
+    <button class="btn" id="sClose">DONE</button>
+  </div>
+</section>
+
+<!-- settings -->
+<section id="settings" class="ov dim hide">
+  <div class="panel pop">
+    <h2>SETTINGS</h2>
+    <div class="toggles"></div>
+    <p class="small">How to play: drag anywhere to fly. Swing your string across a rival's string to start a <b>pech</b>, then saw back &amp; forth fast. Pull hardest when it says <b>PULL NOW!</b> Kites with a red <b>!</b> are hunting you.</p>
+    <button class="btn" id="setClose">DONE</button>
+    <button class="link" id="resetBtn">reset progress</button>
+  </div>
+</section>
+
+<div id="fade"></div>
+<script src="js/levels.js?v=13"></script>
+<script src="js/audio.js?v=13"></script>
+<script src="js/art.js?v=13"></script>
+<script src="js/game.js?v=13"></script>
+<script src="js/render.js?v=13"></script>
+<script src="js/story.js?v=13"></script>
+<script src="js/ui.js?v=13"></script>
+</body>
+</html>

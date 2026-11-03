@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dasa Fun World – Free Browser Games</title>
+<meta name="description" content="Dasa Fun World: free browser games for phone and computer. Kite Wars, Village Fair, Chandrayaan moon landing, Vyapar board game, Robo Rakshak and more. No download, just tap and play.">
+<meta name="keywords" content="Dasa Fun World, free games, browser games, mobile games, Kite Wars, Uttarayan game, Chandrayaan game, Vyapar online, village fair game, Indian games">
+<meta name="theme-color" content="#07051a">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://dasev.publicvm.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dasa Fun World">
+<meta property="og:title" content="Dasa Fun World">
+<meta property="og:description" content="Free browser games. Kites, moon landings, robot fights, a village fair and more. Tap and play.">
+<meta property="og:url" content="https://dasev.publicvm.com/">
+<meta property="og:image" content="https://dasev.publicvm.com/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dasa Fun World">
+<meta name="twitter:description" content="Free browser games. Tap and play.">
+<meta name="twitter:image" content="https://dasev.publicvm.com/assets/img/og.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Dasa Fun World">
+<link rel="preload" href="assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css?v=1">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "Dasa Fun World", "url": "https://dasev.publicvm.com/", "description": "Free browser games: kite fights, moon landings, robot battles, a village fair and more."}, {"@type": "ItemList", "name": "Dasa Fun World games", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://dasev.publicvm.com/games/kite-wars/", "name": "Kite Wars: Uttarayan"}, {"@type": "ListItem", "position": 2, "url": "https://dasev.publicvm.com/games/village-fair/", "name": "Village Fair"}, {"@type": "ListItem", "position": 3, "url": "https://dasev.publicvm.com/games/chandrayaan/", "name": "Chandrayaan"}, {"@type": "ListItem", "position": 4, "url": "https://dasev.publicvm.com/games/vyapar/", "name": "Vyapar"}, {"@type": "ListItem", "position": 5, "url": "https://dasev.publicvm.com/games/samudrayaan/", "name": "Samudrayaan: The Deep"}, {"@type": "ListItem", "position": 6, "url": "https://dasev.publicvm.com/games/robo-rakshak/", "name": "Robo Rakshak 2050"}, {"@type": "ListItem", "position": 7, "url": "https://dasev.publicvm.com/games/ant-work/", "name": "The Ant's Hard Work"}, {"@type": "ListItem", "position": 8, "url": "https://dasev.publicvm.com/games/meteor-dash/", "name": "Meteor Dash"}, {"@type": "ListItem", "position": 9, "url": "https://dasev.publicvm.com/games/echoes/", "name": "ECHOES"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#games">Skip to games</a>
+<div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grid"></div><div class="stars"></div></div>
+<canvas id="splash" aria-hidden="true"></canvas>
+
+<header class="nav" id="nav">
+  <a class="brand" href="./" aria-label="Dasa Fun World home"><img src="assets/img/logo.svg" alt="" width="36" height="36"><span>Dasa Fun World</span></a>
+  <nav class="links" aria-label="Main">
+    <a href="#featured" class="hide-sm">Featured</a>
+    <a href="#games">Games</a>
+    <button id="installBtn" type="button" hidden>Install</button>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="title">
+    <div class="floaters" aria-hidden="true">
+      <img src="assets/img/games/kite-wars.webp" alt=""><img src="assets/img/games/chandrayaan.webp" alt=""><img src="assets/img/games/village-fair.webp" alt=""><img src="assets/img/games/robo-rakshak.webp" alt="">
+    </div>
+    <div class="hero-logo"><span class="orbit" aria-hidden="true"></span><img src="assets/img/logo.svg" alt="Dasa Fun World logo" width="132" height="132"></div>
+    <h1 id="title" class="grad-wrap"><span class="grad"><span class="word">Dasa</span> <span class="word">Fun</span> <span class="word">World</span></span></h1>
+    <p class="tag">9 free games in one place. Fly kites, land on the Moon, fight with robots and win the village fair. No download, just tap and play.</p>
+    <div class="cta"><a class="btn primary" href="#games">▶ Play now</a><button class="btn ghost" id="randomBtn" type="button">🎲 Surprise me</button></div>
+    <ul class="stats" aria-label="At a glance"><li><b>9</b>games</li><li><b>100+</b>levels</li><li><b>Free</b>always</li><li><b>Offline</b>ready</li></ul>
+    <p class="hint">Move your <i>mouse</i> or drag your <i>finger</i> to paint the sky</p>
+  </section>
+
+  <section id="featured" class="wrap reveal" aria-labelledby="feat-title">
+    <div class="sec-head"><h2 id="feat-title">Featured<small>Our biggest adventures</small></h2>
+      <div class="arrows"><button class="icon-btn" id="prevBtn" type="button" aria-label="Previous">‹</button><button class="icon-btn" id="nextBtn" type="button" aria-label="Next">›</button></div></div>
+    <div class="carousel" aria-roledescription="carousel">
+      <div class="track" id="track">
+<a class="slide" href="games/kite-wars/" data-game="kite-wars" style="--accent:#ff8a00" aria-roledescription="slide" aria-label="1 of 4: Kite Wars: Uttarayan">
+  <div class="sbg" style="background-image:url(assets/img/games/kite-wars.webp)"></div>
+  <div class="stext"><span class="kicker">★ 40 levels · Story · Voice</span><h3>Kite Wars: Uttarayan</h3><p>Rule the Uttarayan sky. Cross strings, win the pech and shout KAI PO CHE! 40 levels, five chapters and a big final boss.</p><span class="btn primary">▶ Play now</span></div>
+  <div class="phone"><img src="assets/img/games/kite-wars.webp" alt="" width="480" height="640" decoding="async"></div>
+</a>
+<a class="slide" href="games/village-fair/" data-game="village-fair" style="--accent:#ff3d7f" aria-roledescription="slide" aria-label="2 of 4: Village Fair">
+  <div class="sbg" style="background-image:url(assets/img/games/village-fair.webp)"></div>
+  <div class="stext"><span class="kicker">★ 35 levels · 7 mini-games · Hindi</span><h3 lang="hi">गाँव का मेला<small>Village Fair</small></h3><p>The yearly fair is here! Ring toss, balloon pop, sweet catch and four more fair games. Help Meera become the Fair Champion.</p><span class="btn primary">▶ Play now</span></div>
+  <div class="phone"><img src="assets/img/games/village-fair.webp" alt="" width="480" height="640" loading="lazy" decoding="async"></div>
+</a>
+<a class="slide" href="games/chandrayaan/" data-game="chandrayaan" style="--accent:#4f8cff" aria-roledescription="slide" aria-label="3 of 4: Chandrayaan">
+  <div class="sbg" style="background-image:url(assets/img/games/chandrayaan.webp)"></div>
+  <div class="stext"><span class="kicker">★ 12 levels · Voice · English, Gujarati, Hindi</span><h3>Chandrayaan</h3><p>Launch from Earth, fly to the Moon and land softly near the south pole. Mission-control voice guides every landing.</p><span class="btn primary">▶ Play now</span></div>
+  <div class="phone"><img src="assets/img/games/chandrayaan.webp" alt="" width="480" height="640" loading="lazy" decoding="async"></div>
+</a>
+<a class="slide" href="games/vyapar/" data-game="vyapar" style="--accent:#ffc531" aria-roledescription="slide" aria-label="4 of 4: Vyapar">
+  <div class="sbg" style="background-image:url(assets/img/games/vyapar.webp)"></div>
+  <div class="stext"><span class="kicker">★ 2–4 players · Online · 20 languages</span><h3>Vyapar</h3><p>The classic Indian business board game. Buy cities, build hotels and play online with 2 to 4 friends, each on their own phone.</p><span class="btn primary">▶ Play now</span></div>
+  <div class="phone"><img src="assets/img/games/vyapar.webp" alt="" width="480" height="640" loading="lazy" decoding="async"></div>
+</a>
+      </div>
+      <div class="dots" id="dots" role="tablist" aria-label="Choose slide"><button type="button" aria-label="Slide 1" aria-current="true"></button><button type="button" aria-label="Slide 2" aria-current="false"></button><button type="button" aria-label="Slide 3" aria-current="false"></button><button type="button" aria-label="Slide 4" aria-current="false"></button></div>
+    </div>
+  </section>
+
+  <section id="continue" class="wrap" hidden aria-labelledby="cont-title">
+    <div class="sec-head"><h2 id="cont-title">Continue playing</h2></div>
+    <div class="recent" id="recent"></div>
+  </section>
+
+  <section id="games" class="wrap" aria-labelledby="games-title">
+    <div class="sec-head"><h2 id="games-title">All games<small>Pick one and start playing</small></h2></div>
+    <div class="toolbar">
+      <label class="search"><span class="skip">Search games</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="#fff" stroke-width="2.2"/><path d="M20 20l-4-4" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <input id="q" type="search" placeholder="Search games…" autocomplete="off" enterkeyhint="search" aria-label="Search games"></label>
+      <div class="chips" id="chips" role="group" aria-label="Categories"><button class="chip" type="button" data-cat="All" aria-pressed="true">All</button><button class="chip" type="button" data-cat="Action" aria-pressed="false">Action</button><button class="chip" type="button" data-cat="Story" aria-pressed="false">Story</button><button class="chip" type="button" data-cat="Kids" aria-pressed="false">Kids</button><button class="chip" type="button" data-cat="Board" aria-pressed="false">Board</button><button class="chip" type="button" data-cat="Arcade" aria-pressed="false">Arcade</button><button class="chip" type="button" data-cat="Adventure" aria-pressed="false">Adventure</button><button class="chip" type="button" data-cat="Space" aria-pressed="false">Space</button></div>
+    </div>
+    <div class="games" id="grid">
+<a class="card" href="games/kite-wars/" data-game="kite-wars" data-cats="Action Story" data-kw="kite wars: uttarayan  kite wars action story rule the uttarayan sky. cross strings, win the pech and shout kai po che! 40 levels, five chapters and a big final boss. new" style="--accent:#ff8a00">
+  <span class="badge New">New</span><div class="thumb"><img src="assets/img/games/kite-wars.webp" alt="Kite Wars: Uttarayan screenshot" width="480" height="640" loading="lazy" decoding="async"><span class="play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span></div>
+  <div class="info"><h3>Kite Wars: Uttarayan</h3><p class="desc">Rule the Uttarayan sky. Cross strings, win the pech and shout KAI PO CHE! 40 levels, five chapters and a big final boss.</p><div class="tags"><span>Action</span><span>Story</span></div><span class="go">▶ Play</span></div>
+</a>
+<a class="card" href="games/village-fair/" data-game="village-fair" data-cats="Kids Story Arcade" data-kw="गाँव का मेला village fair village fair kids story arcade the yearly fair is here! ring toss, balloon pop, sweet catch and four more fair games. help meera become the fair champion. hindi" style="--accent:#ff3d7f">
+  <span class="badge Hindi">Hindi</span><div class="thumb"><img src="assets/img/games/village-fair.webp" alt="Village Fair screenshot" width="480" height="640" loading="lazy" decoding="async"><span class="play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span></div>
+  <div class="info"><h3 lang="hi">गाँव का मेला<small>Village Fair</small></h3><p class="desc">The yearly fair is here! Ring toss, balloon pop, sweet catch and four more fair games. Help Meera become the Fair Champion.</p><div class="tags"><span>Kids</span><span>Story</span><span>Arcade</span></div><span class="go">▶ Play</span></div>
+</a>
+<a class="card" href="games/chandrayaan/" data-game="chandrayaan" data-cats="Space Adventure" data-kw="chandrayaan  chandrayaan space adventure launch from earth, fly to the moon and land softly near the south pole. mission-control voice guides every landing. " style="--accent:#4f8cff">
+  <div class="thumb"><img src="assets/img/games/chandrayaan.webp" alt="Chandrayaan screenshot" width="480" height="640" loading="lazy" decoding="async"><span class="play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span></div>
+  <div class="info"><h3>Chandrayaan</h3><p class="desc">Launch from Earth, fly to the Moon and land softly near the south pole. Mission-control voice guides every landing.</p><div class="tags"><span>Space</span><span>Adventure</span></div><span class="go">▶ Play</span></div>
+</a>
+<a class="card" href="games/vyapar/" data-game="vyapar" data-cats="Board" data-kw="vyapar  vyapar board the classic indian business board game. buy cities, build hotels and play online with 2 to 4 friends, each on their own phone. online" style="--accent:#ffc531">
+  <span class="badge Online">Online</span><div class="thumb"><img src="assets/img/games/vyapar.webp" alt="Vyapar screenshot" width="480" height="640" loading="lazy" decoding="async"><span class="play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span></div>
+  <div class="info"><h3>Vyapar</h3><p class="desc">The classic Indian business board game. Buy cities, build hotels and play online with 2 to 4 friends, each on their own phone.</p><div class="tags"><span>Board</span></div><span class="go">▶ Play</span></div>
+</a>
+<a class="card" href="games/samudrayaan/" data-game="samudrayaan" data-cats="Story Adventure" data-kw="samudrayaan: the deep  samudrayaan story adventure pilot a deep-sea submarine into the dark ocean, follow the lost probe and meet glowing creatures of the deep. " style="--accent:#18d6c4">
+  <div class="thumb"><img src="assets/img/games/samudrayaan.webp" alt="Samudrayaan: The Deep screenshot" width="480" height="640" loading="lazy" decoding="async"><span class="play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span></div>
+  <div class="info"><h3>Samudrayaan: The Deep</h3><p class="desc">Pilot a deep-sea submarine into the dark ocean, follow the lost probe and meet glowing creatures of the deep.</p><div class="tags"><span>Story</span><span>Adventure</span></div><span class="go">▶ Play</span></div>
+</a>
+<a class="card" href="games/robo-rakshak/" data-game="robo-rakshak" data-cats="Action" data-kw="robo rakshak 2050  robo rakshak action pilot a giant robot in future ahmedabad. punch combos, perfect blocks and a rocket fist special against monster machines. demo" style="--accent:#ff4d5e">
+  <span class="badge Demo">Demo</span><div class="thumb"><img src="assets/img/games/robo-rakshak.webp" alt="Robo Rakshak 2050 screenshot" width="480" height="640" loading="lazy" decoding="async"><span class="play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span></div>
+  <div class="info"><h3>Robo Rakshak 2050</h3><p class="desc">Pilot a giant robot in future Ahmedabad. Punch combos, perfect blocks and a rocket fist special against monster machines.</p><div class="tags"><span>Action</span></div><span class="go">▶ Play</span></div>
+</a>
+<a class="card" href="games/ant-work/" data-game="ant-work" data-cats="Kids" data-kw="the ant&#x27;s hard work  ant&#x27;s hard work kids the monsoon is coming! guide the little ant, carry food home and fill the storehouse before the rain. watch out for the lizard! demo" style="--accent:#7bd84a">
+  <span class="badge Demo">Demo</span><div class="thumb"><img src="assets/img/games/ant-work.webp" alt="The Ant&#x27;s Hard Work screenshot" width="480" height="640" loading="lazy" decoding="async"><span class="play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span></div>
+  <div class="info"><h3>The Ant&#x27;s Hard Work</h3><p class="desc">The monsoon is coming! Guide the little ant, carry food home and fill the storehouse before the rain. Watch out for the lizard!</p><div class="tags"><span>Kids</span></div><span class="go">▶ Play</span></div>
+</a>
+<a class="card" href="games/meteor-dash/" data-game="meteor-dash" data-cats="Arcade Space" data-kw="meteor dash  meteor dash arcade space dodge the meteors, grab the stars and beat your best score. one finger, endless fun. " style="--accent:#b06bff">
+  <div class="thumb"><img src="assets/img/games/meteor-dash.webp" alt="Meteor Dash screenshot" width="480" height="640" loading="lazy" decoding="async"><span class="play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span></div>
+  <div class="info"><h3>Meteor Dash</h3><p class="desc">Dodge the meteors, grab the stars and beat your best score. One finger, endless fun.</p><div class="tags"><span>Arcade</span><span>Space</span></div><span class="go">▶ Play</span></div>
+</a>
+<a class="card" href="games/echoes/" data-game="echoes" data-cats="Arcade" data-kw="echoes  echoes arcade grab the orbs. every orb spawns a ghost that repeats your last moves. do not touch your past. " style="--accent:#3df2ff">
+  <div class="thumb"><img src="assets/img/games/echoes.webp" alt="ECHOES screenshot" width="480" height="640" loading="lazy" decoding="async"><span class="play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span></div>
+  <div class="info"><h3>ECHOES</h3><p class="desc">Grab the orbs. Every orb spawns a ghost that repeats your last moves. Do not touch your past.</p><div class="tags"><span>Arcade</span></div><span class="go">▶ Play</span></div>
+</a>
+    </div>
+    <p class="empty" id="empty" hidden>No game found. Try another word! 🔍</p>
+
+    <div class="features reveal">
+      <div class="feature"><div class="ic">⚡</div><h3>Instant play</h3><p>No download, no sign up. Tap a game and it starts in seconds.</p></div>
+      <div class="feature"><div class="ic">📱</div><h3>Made for phones</h3><p>Big touch controls, full screen, and great on a computer too.</p></div>
+      <div class="feature"><div class="ic">📶</div><h3>Plays offline</h3><p>Open a game once and most of them keep working without internet.</p></div>
+      <div class="feature"><div class="ic">🏆</div><h3>Progress saved</h3><p>Your levels, stars and best scores stay on your device.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a class="brand" href="./"><img src="assets/img/logo.svg" alt="" width="36" height="36"><span>Dasa Fun World</span></a>
+  <nav aria-label="Footer"><a href="#featured">Featured</a><a href="#games">All games</a><a href="https://github.com/karenajatin/Dasa-Fun-World" rel="noopener">GitHub</a></nav>
+  <p>Free games for everyone. Play fair, have fun!</p>
+  <p>© <span id="yr">2026</span> Dasa Fun World. All rights reserved.</p>
+</footer>
+
+<div class="player" id="player" hidden role="dialog" aria-modal="true" aria-label="Game">
+  <button class="close" id="closeBtn" type="button" aria-label="Close game and go back">✕ <span>Back</span></button>
+  <div class="loading" id="loading"><div><img id="loadImg" src="assets/img/logo.svg" alt=""><b id="loadTitle">Loading…</b><div class="bar"><i></i></div></div></div>
+</div>
+
+<noscript><style>.card,.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<script>window.DFW_GAMES={"kite-wars": {"title": "Kite Wars: Uttarayan", "color": "#ff8a00"}, "village-fair": {"title": "Village Fair", "color": "#ff3d7f"}, "chandrayaan": {"title": "Chandrayaan", "color": "#4f8cff"}, "vyapar": {"title": "Vyapar", "color": "#ffc531"}, "samudrayaan": {"title": "Samudrayaan: The Deep", "color": "#18d6c4"}, "robo-rakshak": {"title": "Robo Rakshak 2050", "color": "#ff4d5e"}, "ant-work": {"title": "The Ant's Hard Work", "color": "#7bd84a"}, "meteor-dash": {"title": "Meteor Dash", "color": "#b06bff"}, "echoes": {"title": "ECHOES", "color": "#3df2ff"}};</script>
+<script src="assets/js/app.js?v=1" defer></script>
+<script src="assets/js/splash.js?v=1" defer></script>
+</body>
+</html>

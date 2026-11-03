@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#1b1440">
+<title>Robo Rakshak 2050 — Prototype</title>
+<meta name="description" content="Robo Rakshak 2050 — pilot a giant robot in future Ahmedabad and smash monster machines with punch combos. One-level playable prototype.">
+<meta property="og:title" content="Robo Rakshak 2050 (prototype)">
+<meta property="og:description" content="Tap to punch, hold to shield, swipe to jump and dodge. Beat RAKSHAS-X and the boss MAHA-DAITYA!">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='22' y='14' width='56' height='44' rx='10' fill='%23e9eef7'/%3E%3Crect x='40' y='28' width='34' height='12' rx='6' fill='%2322e1ff'/%3E%3Crect x='14' y='60' width='72' height='34' rx='8' fill='%232e6be6'/%3E%3Ccircle cx='50' cy='77' r='8' fill='%234ff3ff'/%3E%3C/svg%3E">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#140f2e;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#fff;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+canvas{display:block;touch-action:none;position:fixed;inset:0}
+.ov{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(12,8,32,.6);z-index:5}
+.ov.hide{display:none}
+.card{width:min(88vw,360px);background:#f4f6ff;color:#1d1b3a;border-radius:22px;padding:22px 20px 20px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.card h1{margin:0;font-size:34px;line-height:1.02;letter-spacing:1px;color:#2e6be6;font-weight:900}
+.card h1 span{color:#ff7a1a}
+.card h2{margin:6px 0 14px;font-size:13px;font-weight:800;color:#6b6890;letter-spacing:1px}
+.card ul{list-style:none;padding:0;margin:0 0 16px;text-align:left;font-size:15px;line-height:1.3}
+.card li{margin:8px 0;display:flex;gap:10px;align-items:center}
+.card li b{color:#e8452a}
+.card .ic{flex:0 0 30px;height:30px;border-radius:50%;background:#dfe6ff;display:flex;align-items:center;justify-content:center;font-size:16px}
+.btn{display:block;width:100%;border:0;border-radius:16px;padding:16px;font-size:22px;font-weight:900;color:#fff;background:linear-gradient(#ff9a3c,#ff6a00);box-shadow:0 5px 0 #b24300;letter-spacing:1px;cursor:pointer}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 #b24300}
+.btn2{margin-top:10px;background:linear-gradient(#5b8cff,#2e6be6);box-shadow:0 5px 0 #173f9a;font-size:17px;padding:12px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0 16px}
+.stats div{background:#e3e8ff;border-radius:12px;padding:8px 4px;font-size:13px;color:#5a5a85}
+.stats b{display:block;font-size:22px;color:#1d1b3a}
+.big{font-size:46px !important}
+.note{font-size:12px;color:#8b88a8;margin:10px 0 0}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="start" class="ov">
+ <div class="card">
+  <h1>ROBO RAKSHAK <span>2050</span></h1>
+  <h2>AHMEDABAD · LEVEL 1 · PROTOTYPE</h2>
+  <ul>
+   <li><span class="ic">👊</span><span><b>Tap right side</b> = punch. Tap fast for a 3-hit combo</span></li>
+   <li><span class="ic">🛡️</span><span><b>Hold left side</b> = shield. Block right on time = <b>COUNTER!</b></span></li>
+   <li><span class="ic">⬆️</span><span><b>Swipe up</b> = jump / uppercut. <b>Swipe left</b> = dodge</span></li>
+   <li><span class="ic">🚀</span><span>Meter full? Hit the big <b>SPECIAL</b> button</span></li>
+  </ul>
+  <button class="btn" id="startBtn">START</button>
+  <p class="note">2 rounds: RAKSHAS-X, then the boss · Sound on 🔊</p>
+ </div>
+</div>
+<div id="end" class="ov hide">
+ <div class="card">
+  <h1 id="endTitle" class="big">YOU WIN!</h1>
+  <h2 id="endSub">Ahmedabad is safe</h2>
+  <div class="stats">
+   <div><b id="sHits">0</b>hits</div>
+   <div><b id="sCombo">0</b>best combo</div>
+   <div><b id="sCounter">0</b>counters</div>
+   <div><b id="sTime">0s</b>time</div>
+  </div>
+  <button class="btn" id="retryBtn">RETRY</button>
+  <button class="btn btn2 hide" id="restartBtn" style="display:none">START OVER (ROUND 1)</button>
+ </div>
+</div>
+<script src="game.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#e8245f">
+<title>गाँव का मेला – Village Fair</title>
+<meta name="description" content="गाँव का मेला: सोनपुर में साल का मेला आया है! रिंग, गुब्बारे, मिठाई, निशानेबाज़ी, लड्डू मीनार, बंपर कार और ढोल के 35 लेवल जीतकर मीरा को मेला चैंपियन बनाओ और गाँव के स्कूल की छत बनवाओ।">
+<meta name="keywords" content="village fair, melo, mela, Gujarat, ring toss, balloon pop, mini games, story game, mobile game">
+<link rel="canonical" href="https://dasev.publicvm.com/games/village-fair/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="गाँव का मेला – Village Fair">
+<meta property="og:description" content="पाँच रातें, सात खेल, एक चैंपियन! मीरा के साथ कबीर, चीनू-मीनू, हसमुख काका, बंदू बंदर और लालू काका को हराओ!">
+<meta property="og:url" content="https://dasev.publicvm.com/games/village-fair/">
+<meta property="og:image" content="https://dasev.publicvm.com/games/village-fair/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css?v=17">
+</head>
+<body>
+<canvas id="c" aria-label="गाँव का मेला खेल"></canvas>
+<button id="pauseBtn" class="hide" aria-label="रोको">II</button>
+
+<section id="title" class="ov scr">
+  <div class="logo">
+    <div class="lk">🎡</div>
+    <h1><span>गाँव का</span><br><span>मेला</span></h1>
+    <div class="sub">मेला चैंपियन बनो!</div>
+  </div>
+  <canvas id="tMeera" width="340" height="380"></canvas>
+  <div class="tbtns">
+    <div class="tstats"><span id="tTix">🎟 0</span><span id="tStars">⭐ 0/105</span></div>
+    <button class="btn big" id="playBtn">खेलो</button>
+    <div class="row"><button class="btn alt" id="shopBtn">🛍 दुकान</button><button class="btn alt" id="setBtn">⚙ सेटिंग</button></div>
+    <p class="ver">v1.0 · 35 लेवल · 7 खेल · पूरा मज़ा आवाज़ के साथ 🔊</p>
+  </div>
+</section>
+
+<section id="story" class="ov scr hide">
+  <canvas id="sc"></canvas>
+  <div id="stCard" class="hide"><b id="stTitle"></b><span id="stSub"></span></div>
+  <button id="skipBtn" class="chip">छोड़ो ⏭</button>
+  <div id="stBox"><div id="stName"></div><p id="stText"></p><div class="tapc">टैप ▸</div></div>
+  <div id="celebrate" class="hide">
+    <div class="cel1">मेला चैंपियन!</div>
+    <div class="cel2">स्कूल को नई छत मिल गई!</div>
+    <div class="credits">समाप्त<br><small>मीरा, बा, कबीर, चीनू-मीनू, हसमुख काका, लालू काका, रिंगमास्टर रणजीत और बंदू अगले साल के मेले में फिर मिलेंगे।</small></div>
+    <button class="btn" id="celBtn">मेले में वापस</button>
+  </div>
+</section>
+
+<section id="map" class="ov scr hide">
+  <div class="mtop"><button class="chip" id="mapBack">◀</button><b>सोनपुर मेला</b><span id="mTix" class="chip">🎟 0</span><button class="chip" id="mapShop">🛍</button></div>
+  <div id="mapScroll"><div id="mapInner"><canvas id="mapBg"></canvas></div></div>
+  <button id="spinBtn">रोज़ का<br>चक्कर</button>
+</section>
+
+<section id="card" class="ov dim hide">
+  <div class="panel pop">
+    <div class="cchap" id="cChap"></div>
+    <h2 id="cName"></h2>
+    <canvas id="cRival" width="220" height="220" class="hide"></canvas>
+    <div class="cgames" id="cGames"></div>
+    <div class="cgoal" id="cGoal"></div>
+    <ul class="srules" id="cStars"></ul>
+    <button class="btn big" id="cGo">खेलो! 🎪</button>
+    <button class="link" id="cBack">नक्शे पर वापस</button>
+  </div>
+</section>
+
+<section id="pause" class="ov dim hide">
+  <div class="panel pop">
+    <h2>रुका हुआ</h2>
+    <div class="toggles"></div>
+    <button class="btn big" id="pResume">आगे खेलो</button>
+    <div class="row"><button class="btn alt" id="pRetry">↻ फिर से</button><button class="btn alt" id="pMap">नक्शा</button></div>
+  </div>
+</section>
+
+<section id="result" class="ov dim hide">
+  <div class="panel pop">
+    <h2 class="rtitle" id="rTitle"></h2>
+    <div class="rsub" id="rSub"></div>
+    <div class="rstars"><i>★</i><i>★</i><i>★</i></div>
+    <div class="stats"><div><b id="rScore">0</b>अंक</div><div><b id="rTarget">0</b><span id="rTLabel">लक्ष्य</span></div><div><b id="rCombo">0</b>सबसे बड़ा कॉम्बो</div><div><b id="rTix">+0</b>टिकट</div></div>
+    <div class="gsc" id="rGames"></div>
+    <p class="tip" id="rTip"></p>
+    <button class="btn big" id="rNext">आगे ▶</button>
+    <div class="row"><button class="btn alt" id="rRetry">↻ फिर से</button><button class="btn alt" id="rMap">नक्शा</button></div>
+  </div>
+</section>
+
+<section id="shop" class="ov dim hide">
+  <div class="panel wide pop">
+    <div class="shead"><h2>मेले की दुकान</h2><span id="sTix" class="chip">🎟 0</span></div>
+    <canvas id="sPreview" width="240" height="260"></canvas>
+    <div class="tabs"><button class="tab on" data-tab="hat">टोपी</button><button class="tab" data-tab="outfit">कपड़े</button><button class="tab" data-tab="gear">रिंग-टोकरी</button><button class="tab" data-tab="boost">ताकत</button></div>
+    <div id="sList"></div>
+    <button class="btn" id="sClose">हो गया</button>
+  </div>
+</section>
+
+<section id="wheel" class="ov dim hide">
+  <div class="panel pop">
+    <h2>किस्मत का चक्का</h2>
+    <canvas id="wheelCv" width="520" height="520"></canvas>
+    <div id="wheelRes"></div>
+    <button class="btn big" id="wSpin">घुमाओ!</button>
+    <button class="link" id="wClose">बंद करो</button>
+  </div>
+</section>
+
+<section id="settings" class="ov dim hide">
+  <div class="panel pop">
+    <h2>सेटिंग</h2>
+    <div class="toggles"></div>
+    <p class="small"><b>कैसे खेलें:</b> हर लेवल में एक या ज़्यादा छोटे मेले के खेल हैं। लक्ष्य पार करो तो ★, और ज़्यादा अंक पर ★★ और ★★★। लगातार 3, 6 या 9 बार सही करो तो x2, x3, x4 अंक। टिकट जीतो, दुकान में खर्च करो, और रोज़ एक बार किस्मत का चक्का घुमाओ।</p>
+    <button class="btn" id="setClose">हो गया</button>
+    <button class="link" id="resetBtn">सारी प्रगति मिटाओ</button>
+  </div>
+</section>
+
+<div id="toast"></div>
+<div id="fade"></div>
+<script src="js/data.js?v=17"></script>
+<script src="js/audio.js?v=17"></script>
+<script src="js/art.js?v=17"></script>
+<script src="js/engine.js?v=17"></script>
+<script src="js/games.js?v=17"></script>
+<script src="js/story.js?v=17"></script>
+<script src="js/ui.js?v=17"></script>
+</body>
+</html>

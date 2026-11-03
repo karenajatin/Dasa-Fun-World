@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b2b">
+<title>Meteor Dash</title>
+<meta name="description" content="Dodge meteors, grab stars, beat your best. A tiny space game made by Tab.">
+<meta property="og:title" content="Meteor Dash">
+<meta property="og:description" content="Dodge meteors, grab stars, beat your best. Tap to play.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  <canvas id="game" aria-label="Meteor Dash game"></canvas>
+  <div id="hud" aria-live="polite"><span id="score">0</span><span id="best">BEST 0</span></div>
+  <section id="menu" class="overlay">
+    <h1>METEOR<br>DASH</h1>
+    <p class="tag">Dodge the meteors. Grab the stars.</p>
+    <button id="play" type="button">TAP TO PLAY</button>
+    <p class="how">Drag left/right &middot; or use arrow keys</p>
+    <p class="bestline" id="menuBest"></p>
+  </section>
+  <section id="over" class="overlay hidden">
+    <h2>BOOM!</h2>
+    <p class="big" id="finalScore">0</p>
+    <p class="bestline" id="overBest"></p>
+    <button id="again" type="button">PLAY AGAIN</button>
+    <p class="how">tap or press space</p>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Samudrayaan: The Deep – Free Deep-Sea Submarine Adventure Game</title>
+<meta name="description" content="Samudrayaan: The Deep. Pilot the mini-sub Matsya 6,000 metres down into the Indian Ocean to find the lost probe Varuna-1 and the mystery of a glowing song. 12 story dives, sonar, light, oxygen, upgrades and voiced story. Free, plays in the browser and offline.">
+<meta name="keywords" content="Samudrayaan game, deep sea game, submarine game, underwater adventure, ocean game, free online game, mobile browser game, story game">
+<meta name="theme-color" content="#03182b">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dasev.publicvm.com/games/samudrayaan/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Samudrayaan: The Deep">
+<meta property="og:title" content="Samudrayaan: The Deep – Deep-Sea Story Game">
+<meta property="og:description" content="Dive 6,000 m into the Indian Ocean in the mini-sub Matsya. Find the lost probe Varuna-1 and follow a glowing song. 12 voiced story dives. Free.">
+<meta property="og:url" content="https://dasev.publicvm.com/games/samudrayaan/">
+<meta property="og:image" content="https://dasev.publicvm.com/games/samudrayaan/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Samudrayaan: The Deep">
+<meta name="twitter:description" content="Dive 6,000 m in the mini-sub Matsya. Find Varuna-1 and follow the glowing song. 12 story dives.">
+<meta name="twitter:image" content="https://dasev.publicvm.com/games/samudrayaan/og.jpg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Samudrayaan">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"VideoGame","name":"Samudrayaan: The Deep",
+"url":"https://dasev.publicvm.com/games/samudrayaan/",
+"description":"A free deep-sea story game: pilot the mini-sub Matsya 6,000 m down to find the lost probe Varuna-1 and the source of a glowing song. 12 voiced dives with sonar, light, oxygen and upgrades.",
+"genre":["Adventure","Arcade"],"gamePlatform":["Web browser","Android","iOS"],"applicationCategory":"Game","operatingSystem":"Any",
+"inLanguage":["en"],"playMode":"SinglePlayer","numberOfPlayers":{"@type":"QuantitativeValue","value":1},
+"offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}
+</script>
+</head>
+<body>
+<main id="app">
+  <canvas id="c" aria-label="Samudrayaan game"></canvas>
+
+  <!-- in-dive HUD -->
+  <div id="hud" class="hidden">
+    <div class="hud-top">
+      <div class="hud-left">
+        <div class="hud-name" id="hName">Dive 1</div>
+        <div class="bars">
+          <div class="bar"><i class="ico">O₂</i><div class="track"><div id="fO2" class="fill o2"></div></div></div>
+          <div class="bar"><i class="ico">⛨</i><div class="track"><div id="fHull" class="fill hull"></div></div></div>
+          <div class="bar"><i class="ico">⚡</i><div class="track"><div id="fBat" class="fill bat"></div></div></div>
+        </div>
+      </div>
+      <div class="hud-right">
+        <div class="depth"><b id="hDepth">0</b><small>m</small></div>
+        <div class="counts"><span id="hFrag">◆ 0/3</span><span id="hPearl">● 0</span></div>
+        <button id="bPause" class="icon-btn" aria-label="Pause">❚❚</button>
+      </div>
+    </div>
+    <div id="pressWarn" class="press hidden">PRESSURE LIMIT</div>
+  </div>
+  <div id="controls" class="hidden">
+    <div id="stickZone"><div id="stickBase"><div id="stickKnob"></div></div><div id="stickHint">drag to steer</div></div>
+    <button id="bLight" class="ctl light" aria-label="Light">💡<small>LIGHT</small></button>
+    <button id="bSonar" class="ctl sonar" aria-label="Sonar ping"><span class="ring"></span>◉<small>SONAR</small></button>
+  </div>
+  <div id="toast" class="toast"></div>
+  <div id="hint" class="hint hidden"></div>
+
+  <!-- title -->
+  <section id="sTitle" class="screen">
+    <div class="title-wrap">
+      <h1 id="logo" aria-label="Samudrayaan">SAMUDRAYAAN</h1>
+      <div class="sub-logo">THE DEEP</div>
+      <p class="tagline">Six thousand metres down, something is singing.</p>
+    </div>
+    <div class="menu">
+      <button id="bPlay" class="btn primary">▶ Play</button>
+      <div class="row2">
+        <button id="bDives" class="btn">Dives</button>
+        <button id="bShop" class="btn">Upgrades <span class="pearls-inline"></span></button>
+      </div>
+      <div class="row2">
+        <button id="bHow" class="btn small">How to play</button>
+        <button id="bIntro" class="btn small">Story intro</button>
+      </div>
+      <div class="row2 toggles">
+        <button class="btn small sound-toggle">🔊 Sound</button>
+        <button class="btn small voice-toggle">🗣 Voice</button>
+      </div>
+      <div class="ver">v1</div>
+    </div>
+  </section>
+
+  <!-- dive select -->
+  <section id="sDives" class="screen hidden panel-screen">
+    <div class="panel">
+      <h2>Dives</h2>
+      <div id="diveGrid" class="dive-grid"></div>
+      <div class="panel-foot"><button class="btn back">‹ Back</button><span class="pearls-total"></span></div>
+    </div>
+  </section>
+
+  <!-- upgrades -->
+  <section id="sShop" class="screen hidden panel-screen">
+    <div class="panel">
+      <h2>Matsya Upgrades</h2>
+      <p class="muted">Spend pearls you collect on dives. Upgrades are kept forever.</p>
+      <div id="shopList"></div>
+      <div class="panel-foot"><button class="btn back">‹ Back</button><span class="pearls-total"></span></div>
+    </div>
+  </section>
+
+  <!-- how to play -->
+  <section id="sHow" class="screen hidden panel-screen">
+    <div class="panel">
+      <h2>How to play</h2>
+      <ul class="how">
+        <li><b>Steer:</b> touch and drag anywhere on the left side. Matsya moves the way you drag.</li>
+        <li><b>Collect</b> the glowing orange <b>black-box fragments</b> ◆, then reach the <b>exit beacon</b>. The small arrow shows the way.</li>
+        <li><b>Oxygen</b> runs down. Hover over <b>bubble vents</b> to refill.</li>
+        <li><b>Hull:</b> fast bumps, jellyfish, eels, anglerfish and hot plumes cause damage. Slow and steady is safe.</li>
+        <li><b>💡 Light</b> lets you see in the dark but uses battery, and <b>anglerfish follow light</b>. <b>◉ Sonar</b> shows the cave walls for a moment.</li>
+        <li><b>Checkpoints</b> (green buoys) save your progress inside a dive.</li>
+        <li><b>Pearls</b> buy upgrades: stronger hull, bigger oxygen tank, brighter lamp.</li>
+        <li>Stars: ★ finish · ★★ all fragments · ★★★ hull 50%+ and under par time.</li>
+        <li>Keyboard: arrows / WASD to steer, Space = sonar, L = light, P = pause.</li>
+      </ul>
+      <div class="panel-foot"><button class="btn back">‹ Back</button></div>
+    </div>
+  </section>
+
+  <!-- story card -->
+  <section id="sStory" class="screen hidden">
+    <div class="story-card">
+      <canvas id="art" width="600" height="380"></canvas>
+      <div class="story-chapter" id="stChap">DIVE 1</div>
+      <div class="story-title" id="stTitle">First Light</div>
+      <div class="story-lines" id="stLines"></div>
+      <div class="story-btns"><button id="bStorySkip" class="btn small">Skip</button><button id="bStoryGo" class="btn primary">Dive ▸</button></div>
+    </div>
+  </section>
+
+  <!-- cinematic (intro / ending) -->
+  <section id="sCine" class="screen hidden cine">
+    <div class="cine-sub" id="cineSub"></div>
+    <button id="bCineSkip" class="btn small skip">Skip ›</button>
+  </section>
+
+  <!-- pause -->
+  <section id="sPause" class="screen hidden panel-screen dim">
+    <div class="panel narrow">
+      <h2>Paused</h2>
+      <button id="bResume" class="btn primary">Resume</button>
+      <button id="bRestart" class="btn">Restart dive</button>
+      <div class="row2 toggles"><button class="btn small sound-toggle">🔊 Sound</button><button class="btn small voice-toggle">🗣 Voice</button></div>
+      <button id="bQuit" class="btn small">Quit to menu</button>
+    </div>
+  </section>
+
+  <!-- results -->
+  <section id="sResult" class="screen hidden panel-screen dim">
+    <div class="panel narrow result">
+      <div class="res-kicker">DIVE COMPLETE</div>
+      <h2 id="rName">First Light</h2>
+      <div class="stars" id="rStars"><span>★</span><span>★</span><span>★</span></div>
+      <ul class="checks" id="rChecks"></ul>
+      <div class="res-pearls">● <b id="rPearls">0</b> pearls</div>
+      <button id="bNext" class="btn primary">Next dive ▸</button>
+      <div class="row2"><button id="bResShop" class="btn small">Upgrades</button><button id="bRetry" class="btn small">Retry</button></div>
+      <button id="bResMenu" class="btn small ghost">Menu</button>
+    </div>
+  </section>
+
+  <!-- failure -->
+  <section id="sFail" class="screen hidden panel-screen dim">
+    <div class="panel narrow fail">
+      <div class="res-kicker red" id="fKicker">HULL BREACHED</div>
+      <p id="fText" class="muted">Matsya made an emergency ascent.</p>
+      <button id="bFromCp" class="btn primary">Retry from checkpoint</button>
+      <button id="bFailRestart" class="btn">Restart dive</button>
+      <button id="bFailMenu" class="btn small ghost">Menu</button>
+    </div>
+  </section>
+
+  <div id="curtain"></div>
+  <noscript>Samudrayaan needs JavaScript to play.</noscript>
+</main>
+<script src="levels.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

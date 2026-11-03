@@ -1,0 +1,36 @@
+{
+ "name": "Chandrayaan – Moon Landing Game",
+ "short_name": "Chandrayaan",
+ "description": "Moon-landing game: launch, fly to the Moon and land safely near the south pole. Mission-control voice. English, Gujarati, Hindi.",
+ "start_url": "./",
+ "scope": "./",
+ "display": "fullscreen",
+ "orientation": "any",
+ "background_color": "#070b1f",
+ "theme_color": "#070b1f",
+ "lang": "en",
+ "categories": [
+  "games"
+ ],
+ "icons": [
+  {
+   "src": "icons/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icons/maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "id": "./"
+}

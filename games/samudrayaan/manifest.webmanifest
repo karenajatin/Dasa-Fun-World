@@ -1,0 +1,36 @@
+{
+ "name": "Samudrayaan: The Deep",
+ "short_name": "Samudrayaan",
+ "description": "Deep-sea story game: dive 6,000 m in the mini-sub Matsya to find the lost probe Varuna-1 and follow a glowing song.",
+ "start_url": "./",
+ "scope": "./",
+ "display": "fullscreen",
+ "orientation": "any",
+ "background_color": "#021120",
+ "theme_color": "#03182b",
+ "lang": "en",
+ "categories": [
+  "games"
+ ],
+ "id": "./",
+ "icons": [
+  {
+   "src": "icons/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icons/maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

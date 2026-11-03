@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Chandrayaan – Free Moon Landing Game | Land on the Moon's South Pole</title>
+<meta name="description" content="Chandrayaan: a free moon-landing game. Launch from Earth, fly to the Moon and land your lander safely near the south pole. 12 levels with craters, rocks, solar wind and darkness, mission-control voice, in English, Gujarati and Hindi. Plays in the browser and offline.">
+<meta name="keywords" content="Chandrayaan game, moon landing game, lunar lander, space game, gujarati game, hindi game, free online game, चंद्रयान, ચંદ્રયાન">
+<meta name="theme-color" content="#070b1f">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dasev.publicvm.com/games/chandrayaan/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Chandrayaan">
+<meta property="og:title" content="Chandrayaan – Moon Landing Game">
+<meta property="og:description" content="Launch, fly to the Moon and land safely near the south pole. 12 levels, mission-control voice. Free, in English, Gujarati and Hindi.">
+<meta property="og:url" content="https://dasev.publicvm.com/games/chandrayaan/">
+<meta property="og:image" content="https://dasev.publicvm.com/games/chandrayaan/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_IN">
+<meta property="og:locale:alternate" content="gu_IN">
+<meta property="og:locale:alternate" content="hi_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chandrayaan – Moon Landing Game">
+<meta name="twitter:description" content="Land safely near the Moon's south pole. 12 levels, mission-control voice. English, Gujarati, Hindi.">
+<meta name="twitter:image" content="https://dasev.publicvm.com/games/chandrayaan/og.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Chandrayaan">
+<link rel="preload" href="fonts/gu-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"VideoGame","name":"Chandrayaan","alternateName":["ચંદ્રયાન","चंद्रयान"],
+"url":"https://dasev.publicvm.com/games/chandrayaan/",
+"description":"A free browser moon-landing game: launch from Earth and land a lander near the Moon's south pole across 12 levels with craters, rocks, solar wind and darkness, with mission-control voice callouts.",
+"genre":["Arcade","Simulation"],"gamePlatform":["Web browser","Android","iOS"],"applicationCategory":"Game","operatingSystem":"Any",
+"inLanguage":["en","gu","hi"],"playMode":"SinglePlayer","numberOfPlayers":{"@type":"QuantitativeValue","value":1},
+"offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}
+</script>
+</head>
+<body>
+<main id="app">
+  <canvas id="c" aria-label="Chandrayaan game"></canvas>
+
+  <div id="hud" class="hidden" aria-live="off">
+    <div class="hud-row">
+      <div class="hud-level"><span id="hLevel"></span></div>
+      <button id="bPause" class="icon-btn" aria-label="Pause">⏸</button>
+    </div>
+    <div class="bars">
+      <div class="bar"><span class="bl" data-t="fuel"></span><div class="track"><div id="fuelFill" class="fill fuel"></div></div></div>
+      <div class="bar" id="battBar"><span class="bl" data-t="battery"></span><div class="track"><div id="battFill" class="fill batt"></div></div></div>
+    </div>
+    <div class="readouts">
+      <div class="ro"><small data-t="alt"></small><b id="rAlt">0</b><i>m</i></div>
+      <div class="ro"><small data-t="vs"></small><b id="rVs">0</b><i>m/s</i></div>
+      <div class="ro"><small data-t="hs"></small><b id="rHs">0</b><i>m/s</i></div>
+      <div class="ro"><small data-t="tilt"></small><b id="rTilt">0</b><i>°</i></div>
+    </div>
+    <div id="windRow" class="wind"><span data-t="wind"></span> <b id="rWind">→</b></div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <div id="controls" class="hidden">
+    <div class="rot">
+      <button id="btnL" class="ctl" aria-label="Rotate left">⟲</button>
+      <button id="btnR" class="ctl" aria-label="Rotate right">⟳</button>
+    </div>
+    <button id="btnT" class="ctl thrust" aria-label="Engine"><span class="flame">🔥</span><span data-t="engine"></span></button>
+  </div>
+
+  <!-- Title -->
+  <section id="sTitle" class="screen title-screen">
+    <div class="title-top">
+      <h1 class="logo-wrap"><span id="logo" class="logo" aria-label="Chandrayaan">CHANDRAYAAN</span></h1>
+      <p class="sub" data-t="subtitle"></p>
+    </div>
+    <div class="card title-card">
+      <div class="langbox">
+        <div class="langlabel">🌐 Language · ભાષા · भाषा</div>
+        <div class="langs" role="group" aria-label="Language">
+          <button class="lang" data-lang="en" lang="en">English</button>
+          <button class="lang" data-lang="gu" lang="gu">ગુજરાતી</button>
+          <button class="lang" data-lang="hi" lang="hi">हिंदी</button>
+        </div>
+      </div>
+      <button id="bPlay" class="btn big primary" data-t="play"></button>
+      <div class="row2">
+        <button id="bLevels" class="btn" data-t="levels"></button>
+        <button id="bHow" class="btn" data-t="howto"></button>
+      </div>
+      <div class="toggles">
+        <button class="btn small sound-toggle" aria-pressed="true"></button>
+        <button class="btn small voice-toggle" aria-pressed="true"></button>
+      </div>
+      <div class="ver">v3</div>
+    </div>
+  </section>
+
+  <!-- How to play -->
+  <section id="sHow" class="screen hidden">
+    <div class="card">
+      <h2 data-t="howto"></h2>
+      <ul id="howList" class="how"></ul>
+      <p class="hint" data-t="safeHint"></p>
+      <button class="btn primary back" data-t="back"></button>
+    </div>
+  </section>
+
+  <!-- Level select -->
+  <section id="sLevels" class="screen hidden">
+    <div class="card wide">
+      <h2 data-t="levels"></h2>
+      <div id="levelGrid" class="grid"></div>
+      <button class="btn back" data-t="home"></button>
+    </div>
+  </section>
+
+  <!-- Level intro -->
+  <section id="sIntro" class="screen hidden tap">
+    <div class="card intro">
+      <div class="lvl-no" id="iNo"></div>
+      <h2 id="iName"></h2>
+      <p id="iTip"></p>
+      <button id="bGo" class="btn big primary" data-t="tapStart"></button>
+    </div>
+  </section>
+
+  <!-- Pause -->
+  <section id="sPause" class="screen hidden">
+    <div class="card">
+      <h2 data-t="paused"></h2>
+      <button id="bResume" class="btn big primary" data-t="resume"></button>
+      <button id="bRetryP" class="btn" data-t="retry"></button>
+      <button id="bMenuP" class="btn" data-t="menu"></button>
+      <div class="langbox">
+        <div class="langlabel">🌐 Language · ભાષા · भाषा</div>
+        <div class="langs" role="group" aria-label="Language">
+          <button class="lang" data-lang="en" lang="en">English</button>
+          <button class="lang" data-lang="gu" lang="gu">ગુજરાતી</button>
+          <button class="lang" data-lang="hi" lang="hi">हिंदी</button>
+        </div>
+      </div>
+      <div class="toggles">
+        <button class="btn small sound-toggle" aria-pressed="true"></button>
+        <button class="btn small voice-toggle" aria-pressed="true"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Result -->
+  <section id="sResult" class="screen hidden">
+    <div class="card">
+      <h2 id="resTitle"></h2>
+      <p id="resReason" class="reason"></p>
+      <div id="resStars" class="stars"><span>★</span><span>★</span><span>★</span></div>
+      <table id="resTable" class="breakdown"></table>
+      <p id="resScore" class="score"></p>
+      <p id="resAll" class="all hidden" data-t="allDone"></p>
+      <button id="bNext" class="btn big primary" data-t="next"></button>
+      <button id="bRetry" class="btn" data-t="retry"></button>
+      <button id="bMenu" class="btn" data-t="menu"></button>
+    </div>
+  </section>
+
+  <div id="cineCap" class="cine-cap hidden"></div>
+  <button id="bSkip" class="skipbtn hidden" data-t="skip"></button>
+  <div id="curtain"></div>
+  <noscript><p style="color:#fff;padding:20px">Chandrayaan is a moon-landing game. Please turn on JavaScript to play.</p></noscript>
+</main>
+<script src="i18n.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
