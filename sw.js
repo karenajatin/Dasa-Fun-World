@@ -1,7 +1,7 @@
 /* Dasa Fun World portal service worker. It keeps the portal itself working offline.
    Each game under games/ has its own service worker with its own scope, so this one leaves games/ alone. */
-const CACHE = 'dfw-portal-v1';
-const SHELL = ["./", "index.html", "assets/css/style.css?v=1", "assets/js/app.js?v=1", "assets/js/splash.js?v=1", "assets/fonts/fredoka-latin.woff2", "assets/img/logo.svg", "favicon.svg", "assets/img/icon-192.png", "assets/img/favicon-32.png", "manifest.webmanifest", "assets/img/games/kite-wars.webp", "assets/img/games/village-fair.webp", "assets/img/games/chandrayaan.webp", "assets/img/games/vyapar.webp", "assets/img/games/samudrayaan.webp", "assets/img/games/robo-rakshak.webp", "assets/img/games/ant-work.webp", "assets/img/games/meteor-dash.webp", "assets/img/games/echoes.webp"];
+const CACHE = 'dfw-portal-v2';
+const SHELL = ["./", "index.html", "assets/css/style.css?v=2", "assets/js/app.js?v=2", "assets/js/splash.js?v=2", "assets/fonts/fredoka-latin.woff2", "assets/img/logo.svg", "favicon.svg", "assets/img/icon-192.png", "assets/img/favicon-32.png", "manifest.webmanifest", "assets/img/games/kite-wars.webp", "assets/img/games/village-fair.webp", "assets/img/games/chandrayaan.webp", "assets/img/games/vyapar.webp", "assets/img/games/samudrayaan.webp", "assets/img/games/robo-rakshak.webp", "assets/img/games/ant-work.webp", "assets/img/games/meteor-dash.webp", "assets/img/games/echoes.webp"];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL.map(u => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting()));
 });

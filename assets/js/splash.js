@@ -26,6 +26,7 @@
     COLOR_UPDATE_SPEED: 10
   };
   var DPR_CAP = small ? 1 : 1.5;
+  var COLOR_GAIN = small ? 0.24 : 0.15; // fingers send fewer move events than a mouse, so each splash is a little richer
 
   function Pointer() { this.id = -1; this.texcoordX = 0; this.texcoordY = 0; this.prevTexcoordX = 0; this.prevTexcoordY = 0; this.deltaX = 0; this.deltaY = 0; this.down = false; this.moved = false; this.color = generateColor(); }
   var pointers = [new Pointer()];
@@ -458,7 +459,7 @@
     for (var i = 0; i < 5; i++) { var c = generateColor(); c.r *= 8; c.g *= 8; c.b *= 8; splat(p.texcoordX + (Math.random() - .5) * .2, p.texcoordY + (Math.random() - .5) * .2, 900 * (Math.random() - .5), 900 * (Math.random() - .5), c); }
   };
 
-  function generateColor() { var c = HSVtoRGB(Math.random(), 1.0, 1.0); c.r *= 0.15; c.g *= 0.15; c.b *= 0.15; return c; }
+  function generateColor() { var c = HSVtoRGB(Math.random(), 1.0, 1.0); c.r *= COLOR_GAIN; c.g *= COLOR_GAIN; c.b *= COLOR_GAIN; return c; }
   function HSVtoRGB(h, s, v) {
     var r, g, b, i = Math.floor(h * 6), f = h * 6 - i, p = v * (1 - s), q = v * (1 - f * s), t = v * (1 - (1 - f) * s);
     switch (i % 6) { case 0: r = v; g = t; b = p; break; case 1: r = q; g = v; b = p; break; case 2: r = p; g = v; b = t; break;

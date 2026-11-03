@@ -6,6 +6,8 @@
   var GAMES = window.DFW_GAMES || {};
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia && matchMedia('(pointer: fine)').matches;
+  var hint = $('#hint'); if (hint && !fine) hint.innerHTML = 'Drag your <i>finger</i> anywhere to paint the sky';
+  if (hint && reduce) hint.hidden = true;
   var yr = $('#yr'); if (yr) yr.textContent = new Date().getFullYear();
 
   // nav shadow on scroll
